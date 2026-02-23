@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Consent Demo</title>
+    <link rel="stylesheet" href="static/src/css/consent.css">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            padding: 2rem;
+            transition: padding-bottom 0.3s ease;
+        }
+
+        /* Demo content */
+        .demo-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .demo-content h1 {
+            margin-bottom: 1rem;
+        }
+
+        .demo-content p {
+            margin-bottom: 1rem;
+        }
+
+        .consent-status {
+            background: #f5f5f5;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .consent-status h2 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .consent-status ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .consent-status li {
+            padding: 0.25rem 0;
+        }
+
+        .consent-status .granted {
+            color: #15803d;
+            font-weight: 600;
+        }
+
+        .consent-status .denied {
+            color: #dc2626;
+            font-weight: 600;
+        }
+
+        /* Static Cookie Preferences Button (for footer placement) */
+        .cookie-preferences-button {
+            background: transparent;
+            color: inherit;
+            border: none;
+            padding: 0;
+            font-size: inherit;
+            cursor: pointer;
+            text-decoration: underline;
+            font-family: inherit;
+        }
+
+        .cookie-preferences-button:hover {
+            text-decoration: none;
+        }
+
+        .cookie-preferences-button:focus {
+            outline: 2px solid #1e293b;
+            outline-offset: 2px;
+        }
+
+        /* Demo footer */
+        .demo-footer {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            padding: 2rem 0;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Content -->
+    <div class="demo-content">
+        <h1>Cookie Consent Demo</h1>
+        <p>Complete cookie consent with left-side settings panel, multi-tier management, and conditional script loading.</p>
+
+        <div class="consent-status">
+            <h2>Current Consent Status</h2>
+            <ul id="consent-status-list" role="status" aria-live="polite" aria-atomic="true">
+                <li>Loading...</li>
+            </ul>
+        </div>
+
+        <h2>Features</h2>
+        <ul>
+            <li><strong>Left-side slide-in panel</strong> for detailed settings (opens from banner or footer button)</li>
+            <li><strong>Fixed bottom banner</strong> for first-time visitors</li>
+            <li><strong>Static button</strong> in footer for easy access to preferences</li>
+            <li><strong>Simplified categories</strong> with clear descriptions</li>
+            <li><strong>LocalStorage persistence</strong> with 365-day expiry</li>
+            <li><strong>Conditional script loading</strong> based on consent</li>
+            <li><strong>Full WCAG AA accessibility</strong> with keyboard navigation and screen reader support</li>
+        </ul>
+
+        <h2>Try It</h2>
+        <ul>
+            <li>Click "Cookie Preferences" in the footer below to open the settings panel</li>
+            <li>Use Tab to navigate between options, Shift+Tab to go backwards</li>
+            <li>Press Space or Enter to toggle categories</li>
+            <li>Press Escape or click the overlay to close the panel</li>
+            <li>Reload the page to see preferences persist</li>
+            <li><strong>Enable debug mode</strong> to see console logs: <code>cookieConsent.updateConfig({ debug: true })</code></li>
+        </ul>
+
+        <h2>Customization</h2>
+        <p>All interface text and settings are centralized in the <strong>CONFIG</strong> object at the top of the JavaScript. To customize:</p>
+        <ul>
+            <li><strong>Debug mode:</strong> Set <code>CONFIG.debug = true</code> to enable console logging</li>
+            <li><strong>Banner text:</strong> Edit <code>CONFIG.banner.*</code></li>
+            <li><strong>Panel heading:</strong> Edit <code>CONFIG.panel.heading</code></li>
+            <li><strong>Category names/descriptions:</strong> Edit <code>CONFIG.categories.*</code></li>
+            <li><strong>Button labels:</strong> Edit <code>CONFIG.banner.buttons.*</code> or <code>CONFIG.panel.buttons.*</code></li>
+            <li><strong>Storage duration:</strong> Edit <code>CONFIG.expiryDays</code></li>
+            <li><strong>Status labels:</strong> Edit <code>CONFIG.statusLabels.*</code></li>
+        </ul>
+
+        <p><strong>Try it now:</strong> Open the browser console and run:</p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>// Enable debug logging
+cookieConsent.updateConfig({ debug: true });
+
+// Change the banner heading
+cookieConsent.updateConfig({
+  banner: { heading: 'Your custom heading!' }
+});
+
+// Change panel title
+cookieConsent.updateConfig({
+  panel: { heading: 'Cookie Settings' }
+});
+
+// View current config
+cookieConsentConfig;</code></pre>
+
+        <div class="demo-footer">
+            <p>
+                © 2026 Demo Site |
+                <a href="#privacy">Privacy Policy</a> |
+                <button class="cookie-preferences-button" onclick="cookieConsent.openSettings()">
+                    Cookie Preferences
+                </button>
+            </p>
+        </div>
+    </div>
+
+    <!-- Cookie Banner -->
+    <div class="banner hidden" id="banner" role="region" aria-label="Cookie consent banner">
+        <div class="banner__content">
+            <div class="banner__message">
+                <!-- Content populated from config -->
+            </div>
+            <div class="banner__actions">
+                <!-- Buttons populated from config -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Panel Overlay -->
+    <div class="panel__overlay" id="panel__overlay"></div>
+
+    <!-- Settings Panel -->
+    <div class="panel" id="panel" role="dialog" aria-labelledby="panel-heading" aria-modal="true">
+        <div class="panel__header">
+            <h2 id="panel-heading"><!-- Heading populated from config --></h2>
+            <button class="panel__close" onclick="cookieConsent.closeSettings()" aria-label="Close preferences panel">
+                ×
+            </button>
+        </div>
+        <div class="panel__content">
+            <div class="panel__body">
+                <!-- Categories populated from config -->
+            </div>
+        </div>
+        <div class="panel__footer">
+            <!-- Buttons populated from config -->
+        </div>
+    </div>
+
+    <script src="static/src/js/consent.js"></script>
+    <script>
+        const cookieConsentConfig = {
+            debug: false,
+            storageKey: 'cookie-consent-preferences',
+            expiryDays: 365,
+            banner: {
+                heading: 'We use cookies',
+                message: 'to improve your experience on our site. We use different types of cookies for analytics and marketing.',
+                linkText: 'Learn more about our privacy policy',
+                linkUrl: '#privacy-policy',
+                buttons: {
+                    acceptAll: 'Accept All',
+                    rejectAll: 'Reject All',
+                    customize: 'Customize'
+                }
+            },
+            panel: {
+                heading: 'Privacy Settings',
+                buttons: {
+                    rejectAll: 'Reject All',
+                    save: 'Save'
+                }
+            },
+            categories: {
+                necessary: {
+                    enabled: true,
+                    required: true,
+                    default: true,
+                    title: 'Necessary',
+                    description: 'Essential cookies required for the website to function.',
+                    onAccept: null
+                },
+                analytics: {
+                    enabled: true,
+                    required: false,
+                    default: false,
+                    title: 'Analytics',
+                    description: 'Help us understand how visitors use our website.',
+                    onAccept: function() {
+                        if (window.gtag) {
+                            window.gtag('consent', 'update', {
+                                'analytics_storage': 'granted'
+                            });
+                        }
+                    }
+                },
+                marketing: {
+                    enabled: true,
+                    required: false,
+                    default: false,
+                    title: 'Marketing',
+                    description: 'Used to deliver relevant advertising.',
+                    onAccept: function() {
+                        if (window.gtag) {
+                            window.gtag('consent', 'update', {
+                                'ad_storage': 'granted',
+                                'ad_user_data': 'granted',
+                                'ad_personalization': 'granted'
+                            });
+                        }
+                    }
+                },
+                preferences: {
+                    enabled: true,
+                    required: false,
+                    default: false,
+                    title: 'Preferences',
+                    description: 'Remember your settings and personalize features.',
+                    onAccept: null
+                }
+            },
+            statusLabels: {
+                granted: '✓ Granted',
+                denied: '✗ Denied',
+                noConsent: 'No consent given yet'
+            },
+            logging: {
+                acceptAll: '✅ All cookies accepted',
+                rejectAll: '❌ All optional cookies rejected',
+                savePreferences: '💾 Preferences saved:',
+                loadAnalytics: '📊 Loading Analytics scripts...',
+                loadMarketing: '🎯 Loading Marketing scripts...',
+                loadPreferences: '⚙️ Loading Preference scripts...',
+                categoryEnabled: 'enabled',
+                categoryDisabled: 'disabled',
+                analyticsAllowed: 'Analytics is allowed - running analytics code'
+            }
+        };
+
+        const cookieConsent = CookieConsentManager.create(cookieConsentConfig);
+        window.cookieConsent = cookieConsent;
+    </script>
+</body>
+</html>

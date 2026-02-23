@@ -1,0 +1,32 @@
+{
+  "name": "cookie-consent-manager",
+  "version": "1.0.0",
+  "description": "WCAG AA accessible cookie consent library with multi-tier management, localStorage persistence, and conditional script loading",
+  "main": "src/js/consent.js",
+  "style": "src/css/consent.css",
+  "scripts": {
+    "demo": "python3 -m http.server 8000 && open http://localhost:8000/demo.html"
+  },
+  "keywords": [
+    "cookie",
+    "consent",
+    "gdpr",
+    "accessibility",
+    "wcag",
+    "a11y",
+    "keyboard-navigation",
+    "screen-reader",
+    "vanilla-js"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "files": [
+    "src/js/consent.js",
+    "src/css/consent.css",
+    "README.md"
+  ]
+}
