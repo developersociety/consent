@@ -1,5 +1,5 @@
 {
-  "name": "cookie-consent-manager",
+  "name": "@developersociety/cookie-consent-manager",
   "version": "1.0.0",
   "description": "WCAG AA accessible cookie consent library with multi-tier management, localStorage persistence, and conditional script loading",
   "main": "src/js/consent.js",
@@ -18,11 +18,14 @@
     "screen-reader",
     "vanilla-js"
   ],
-  "author": "",
+  "author": "The Developer Society",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/developersociety/consent"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "files": [
     "src/js/consent.js",
