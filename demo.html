@@ -55,6 +55,7 @@
 
         .consent-status li {
             padding: 0.25rem 0;
+            color: #1e293b;
         }
 
         .consent-status .granted {
@@ -88,6 +89,22 @@
             outline-offset: 2px;
         }
 
+        /* Privacy section */
+        #privacy {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #f9fafb;
+            border-radius: 8px;
+            border-left: 4px solid #0ea5e9;
+            color: #1e293b;
+        }
+
+        #privacy h2 {
+            color: #1e293b;
+            margin-top: 0;
+        }
+
         /* Demo footer */
         .demo-footer {
             max-width: 800px;
@@ -96,7 +113,20 @@
             border-top: 1px solid #e5e7eb;
             text-align: center;
             font-size: 0.875rem;
-            color: #64748b;
+            color: #334155;
+        }
+
+        .demo-footer a {
+            color: #0ea5e9;
+            font-weight: 600;
+        }
+
+        .demo-footer a:visited {
+            color: #0284c7;
+        }
+
+        .demo-footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -165,6 +195,11 @@ cookieConsent.updateConfig({
 
 // View current config
 cookieConsentConfig;</code></pre>
+
+        <section id="privacy">
+            <h2>Privacy Policy</h2>
+            <p>This is a demo page showcasing a WCAG AA accessible cookie consent library. For information about how this demo uses cookies, please refer to the cookie consent banner at the bottom of the page.</p>
+        </section>
 
         <footer class="demo-footer">
             <p>
