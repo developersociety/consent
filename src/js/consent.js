@@ -245,6 +245,10 @@ const CookieConsentManager = (() => {
         };
 
         const actions = {
+            openSettings() {
+                ui.openSettings();
+            },
+
             acceptAll() {
                 const consent = {};
                 Object.keys(config.categories).forEach((key) => {
