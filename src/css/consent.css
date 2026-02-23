@@ -51,8 +51,8 @@
 }
 
 .banner__button {
-    background: #0ea5e9;
-    color: #fff;
+    background: #ffffff;
+    color: #1e293b;
     border: none;
     padding: 0.75rem 1.5rem;
     border-radius: 6px;
@@ -68,16 +68,16 @@
 }
 
 .banner__button:hover {
-    background: #0284c7;
+    background: #f1f5f9;
 }
 
 .banner__button:focus {
-    outline: 2px solid #ffffff;
+    outline: 2px solid #fbbf24;
     outline-offset: 2px;
 }
 
 .banner__button:active {
-    background: #0369a1;
+    background: #e2e8f0;
 }
 
 .banner__button--secondary {
