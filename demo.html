@@ -213,21 +213,22 @@ cookieConsentConfig;</code></pre>
             storageKey: 'cookie-consent-preferences',
             expiryDays: 365,
             banner: {
-                heading: 'We use cookies',
-                message: 'to improve your experience on our site. We use different types of cookies for analytics and marketing.',
+                heading: 'Your privacy choices for this site',
+                message: 'This site uses cookies and other web storage technologies to enhance your experience beyond necessary core functionality.',
                 linkText: 'Learn more about our privacy policy',
                 linkUrl: '#privacy-policy',
                 buttons: {
-                    acceptAll: 'Accept All',
-                    rejectAll: 'Reject All',
-                    customize: 'Customize'
+                    acceptAll: 'Accept',
+                    rejectAll: 'Decline',
+                    customize: 'Manage choices'
                 }
             },
             panel: {
-                heading: 'Privacy Settings',
+                heading: 'Privacy information',
                 buttons: {
-                    rejectAll: 'Reject All',
-                    save: 'Save'
+                    rejectAll: 'Decline all',
+                    save: 'Save',
+                    acceptAll: 'Accept all'
                 }
             },
             categories: {
@@ -235,16 +236,16 @@ cookieConsentConfig;</code></pre>
                     enabled: true,
                     required: true,
                     default: true,
-                    title: 'Necessary',
-                    description: 'Essential cookies required for the website to function.',
+                    title: 'Strictly necessary storage',
+                    description: 'Necessary storage enables core site functionality. This site cannot function without it, so it can only be disabled by changing settings in your browser.',
                     onAccept: null
                 },
                 analytics: {
                     enabled: true,
                     required: false,
                     default: false,
-                    title: 'Analytics',
-                    description: 'Help us understand how visitors use our website.',
+                    title: 'Analytics cookie',
+                    description: 'When you visit our website we use Google Analytics to collect information on your journey through the website. This information is anonymous and we do not use it to identify you. Google provides a Google Analytics opt-out add on for all popular browsers',
                     onAccept: function() {
                         if (window.gtag) {
                             window.gtag('consent', 'update', {
@@ -257,8 +258,8 @@ cookieConsentConfig;</code></pre>
                     enabled: true,
                     required: false,
                     default: false,
-                    title: 'Marketing',
-                    description: 'Used to deliver relevant advertising.',
+                    title: 'Marketing cookies',
+                    description: 'Marketing cookies can help advertisers deliver more relevant advertisements or limit how many times you see a particular advertisement.',
                     onAccept: function() {
                         if (window.gtag) {
                             window.gtag('consent', 'update', {
@@ -273,8 +274,8 @@ cookieConsentConfig;</code></pre>
                     enabled: true,
                     required: false,
                     default: false,
-                    title: 'Preferences',
-                    description: 'Remember your settings and personalize features.',
+                    title: 'Preference cookies',
+                    description: 'Preference cookies enable the site to remember information that makes your use of the site more tailored to your local needs, like your preferred language or region.',
                     onAccept: null
                 }
             },

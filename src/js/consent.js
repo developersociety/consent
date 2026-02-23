@@ -152,6 +152,9 @@ const CookieConsentManager = (() => {
                         <button class="panel__button" data-action="savePreferences">
                             ${config.panel.buttons.save}
                         </button>
+                        <button class="panel__button" data-action="acceptAll">
+                            ${config.panel.buttons.acceptAll}
+                        </button>
                     `;
                 }
             },
@@ -255,6 +258,7 @@ const CookieConsentManager = (() => {
                     consent[key] = true;
                 });
                 storage.save(consent);
+                ui.closeSettings();
                 ui.hideBanner();
                 actions.loadScripts();
                 ui.updateStatus();
@@ -268,7 +272,9 @@ const CookieConsentManager = (() => {
                     consent[key] = cat.required;
                 });
                 storage.save(consent);
+                ui.closeSettings();
                 ui.hideBanner();
+                actions.loadScripts();
                 ui.updateStatus();
                 announce('Non-essential cookies rejected.');
                 log(config.logging.rejectAll);
