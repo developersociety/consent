@@ -100,8 +100,11 @@
     </style>
 </head>
 <body>
+    <!-- Skip to main content link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Demo Content -->
-    <div class="demo-content">
+    <main class="demo-content" id="main-content">
         <h1>Cookie Consent Demo</h1>
         <p>Complete cookie consent with left-side settings panel, multi-tier management, and conditional script loading.</p>
 
@@ -162,7 +165,7 @@ cookieConsent.updateConfig({
 // View current config
 cookieConsentConfig;</code></pre>
 
-        <div class="demo-footer">
+        <footer class="demo-footer">
             <p>
                 © 2026 Demo Site |
                 <a href="#privacy">Privacy Policy</a> |
@@ -170,8 +173,8 @@ cookieConsentConfig;</code></pre>
                     Cookie Preferences
                 </button>
             </p>
-        </div>
-    </div>
+        </footer>
+    </main>
 
     <!-- Cookie Banner -->
     <div class="banner hidden" id="banner" role="region" aria-label="Cookie consent banner">

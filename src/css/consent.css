@@ -30,8 +30,9 @@
 }
 
 .banner__message a {
-    color: #ffffff;
+    color: #e0e7ff;
     text-decoration: underline;
+    font-weight: 600;
 }
 
 .banner__message a:hover {
@@ -50,7 +51,7 @@
 }
 
 .banner__button {
-    background: #3b82f6;
+    background: #0ea5e9;
     color: #fff;
     border: none;
     padding: 0.75rem 1.5rem;
@@ -58,7 +59,7 @@
     font-size: 0.95rem;
     cursor: pointer;
     transition: background 0.2s ease;
-    font-weight: 500;
+    font-weight: 600;
     min-width: 44px;
     min-height: 44px;
     display: inline-flex;
@@ -67,16 +68,16 @@
 }
 
 .banner__button:hover {
-    background: #2563eb;
+    background: #0284c7;
 }
 
 .banner__button:focus {
-    outline: 2px solid #1e293b;
+    outline: 2px solid #ffffff;
     outline-offset: 2px;
 }
 
 .banner__button:active {
-    background: #1d4ed8;
+    background: #0369a1;
 }
 
 .banner__button--secondary {
@@ -282,7 +283,7 @@
 
 .category__desc {
     font-size: 0.875rem;
-    color: #475569;
+    color: #334155;
     line-height: 1.5;
     margin: 0;
 }
