@@ -48,13 +48,9 @@
             margin-bottom: 0.5rem;
         }
 
-        .consent-status ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .consent-status li {
-            padding: 0.25rem 0;
+        .consent-status p {
+            margin: 0.25rem 0;
+            padding: 0;
             color: #1e293b;
         }
 
@@ -141,9 +137,9 @@
 
         <div class="consent-status">
             <h2>Current Consent Status</h2>
-            <ul id="consent-status-list" role="status" aria-live="polite" aria-atomic="true">
-                <li>Loading...</li>
-            </ul>
+            <div id="consent-status-list" role="status" aria-live="polite" aria-atomic="true">
+                <p>Loading...</p>
+            </div>
         </div>
 
         <h2>Features</h2>

@@ -234,14 +234,14 @@ const CookieConsentManager = (() => {
                 if (!list) return;
 
                 if (!state.consent) {
-                    list.innerHTML = `<li>${config.statusLabels.noConsent}</li>`;
+                    list.innerHTML = `<p>${config.statusLabels.noConsent}</p>`;
                     return;
                 }
 
                 list.innerHTML = Object.entries(config.categories)
                     .map(
                         ([key, cat]) =>
-                            `<li><strong>${cat.title}:</strong> <span class="${state.consent[key] ? 'granted' : 'denied'}">${state.consent[key] ? config.statusLabels.granted : config.statusLabels.denied}</span></li>`,
+                            `<p><strong>${cat.title}:</strong> <span class="${state.consent[key] ? 'granted' : 'denied'}">${state.consent[key] ? config.statusLabels.granted : config.statusLabels.denied}</span></p>`,
                     )
                     .join('');
             },
